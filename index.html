@@ -12,26 +12,30 @@
   <p>Take a look at our selection of books!</p>
 
   <!-- Filter one  genre?-->
-  <select id="filterOne">
-    <option value="all">All</option>
-    <option value=""></option>
-    <option value=""></option>
-    <option value=""></option>
-    <option value=""></option>
-  </select>
+  <div class="filter__genre">
+    <select>
+      <option value="all">All</option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+      <option value=""></option>
+    </select>
+  </div>
 
   <!-- Filter two  favorites? -->
-  <button>all</button>
-  <button>favorites</button>
+  <div class="filter__fave">
+    <button>all</button>
+    <button>favorites</button>
+  </div>
 
-  <!-- Sort one  by author? -->
-  <button>author</button>
-
-  <!-- sort two by title? -->
-  <button>title</button>
+  <!-- Sort one  by author and title? -->
+  <div class="filter__abc">
+    <button>author</button>
+    <button>title</button>
+  </div>
 
   <!-- container of book cards -->
-  <section id="container">
+  <section class="container">
   </section>
 
   <script src="./script.js"></script>

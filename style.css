@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 200px;
+  min-height: 450px;
+  margin: 10px;
+}
+
+.card image {
+  width: 100%;
+}
