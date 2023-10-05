@@ -187,8 +187,8 @@ const faveBooks = [];
 // get references to html elements
 const container = document.getElementsByClassName("container");
 const favorites = document.getElementsByClassName("filter__fave");
-const filterGenre = document.getElementsByClassName("filter__genre");
-const filterAbc = document.getElementsByClassName("filter__abc");
+const genre = document.getElementsByClassName("filter__genre--dropdown");
+const abc = document.getElementsByClassName("filter__abc");
 
 // load books
 const loadBooks = (bookArray) => {
@@ -208,6 +208,26 @@ const loadBooks = (bookArray) => {
       <p>Year: ${book.year}</p>
       <p>${book.description}</p>
       <p>Rating: ${book.rating}</p>
+    </div>
     `
   });
 };
+
+// load all books
+loadBooks(bookArray);
+
+
+// function to filter and display books by genre
+const filterGenre = () => {
+  const value = filterGenre.value;
+
+  if (value === "all") {
+    loadBooks(bookArray);
+  } else  {
+    const filteredList = bookArray.filter((book) => book.genre === value);
+    loadBooks(filteredList);
+  };
+};
+
+// apply genre filter when user changes dropdown
+// genre.addEventListener("change", filterGenre);
