@@ -1,8 +1,4 @@
-/*Here we have created two different arrays that you can work with if you want.
-If you choose to create your own arrays with elements, just make sure that some
-of the properties make sense to filter on, and some to sort on.*/
-
-const books = [
+const bookArray = [
   {
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
@@ -182,5 +178,36 @@ const books = [
     description:
       'A dystopian novel set in a seemingly perfect society where young Jonas discovers the dark truth beneath the surface.',
     image: './books-images/unknown.jpg'
-  }
-]
+  },
+];
+
+// initialize empty array to hold favorites
+const faveBooks = [];
+
+// get references to html elements
+const container = document.getElementsByClassName("container");
+const favorites = document.getElementsByClassName("filter__fave");
+const filterGenre = document.getElementsByClassName("filter__genre");
+const filterAbc = document.getElementsByClassName("filter__abc");
+
+// load books
+const loadBooks = (bookArray) => {
+  container.innerHTML="";
+
+  bookArray.forEach((book) => {
+    container.innerHTML += `
+    <div class="card">
+      <p>${book.title}</p>
+      <p>${book.author}</p>
+      <button onClick="addToFaves('${book.title}')">heart icon</button>
+      <img src=${book.image} alt=${book.title} >
+    </div>
+
+    <div class="overlay">
+      <p>${book.genre}</p>
+      <p>Year: ${book.year}</p>
+      <p>${book.description}</p>
+      <p>Rating: ${book.rating}</p>
+    `
+  });
+};
