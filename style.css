@@ -34,7 +34,9 @@ body {
 
 #card--btn {
   background-color: transparent;
+  cursor: pointer;
 }
+
 
 #card--img {
   width: 100%;

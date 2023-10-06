@@ -238,10 +238,19 @@ const filterGenre = () => {
 //apply genre filter when user changes dropdown
 genre.addEventListener("change", filterGenre);
 
+
 const addToFaves = (item) => {
+  // change color of heart to solid after click
+  // !! heart changes to solid for only the first book...
   const heart = document.getElementById("card--heart");
   heart.className = "fa-solid fa-heart";
 
-  faveBooks.push(item);
+  // add book to faveBooks array if not already there
+  if (faveBooks.includes(item)) {
+    return;
+  } else {
+    faveBooks.push(item);
+  }
+
   console.log(faveBooks);
 }
