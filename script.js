@@ -67,7 +67,7 @@ const bookArray = [
     rating: 4.7,
     description:
       'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
+    image: "./books-images/harry-potter-and-the-sorcerer.jpg"
   },
   {
     title: 'Moby-Dick',
@@ -197,10 +197,14 @@ const loadBooks = (bookArray) => {
   bookArray.forEach((book) => {
     container.innerHTML += `
     <div id="card">
-      <p>${book.title}</p>
-      <p>${book.author}</p>
-      <button onClick="addToFaves('${book.title}')">heart icon</button>
-      <img src=${book.image} alt=${book.title} >
+      <div id="card--info">
+        <div>
+          <p>${book.title}</p>
+          <p>${book.author}</p>
+        </div>
+        <button onClick="addToFaves('${book.title}')">heart icon</button>
+      </div>
+      <img id="card--img" src=${book.image} alt=${book.title} >
     </div>
 
     <div class="overlay">
@@ -229,5 +233,5 @@ const filterGenre = () => {
   };
 };
 
-// apply genre filter when user changes dropdown
-// genre.addEventListener("change", filterGenre);
+//apply genre filter when user changes dropdown
+genre.addEventListener("change", filterGenre);
