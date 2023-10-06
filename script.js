@@ -185,19 +185,19 @@ const bookArray = [
 const faveBooks = [];
 
 // Get references to html elements
-const container = document.getElementsByClassName("container");
+const container = document.getElementById("container");
 const favorites = document.getElementsByClassName("filter__fave--btn");
-const filterGenre = document.getElementsByClassName("filter__genre--dropdown");
+const filterGenre = document.getElementById("filter__genre--dropdown");
 const filterTitle = document.getElementsByClassName("filter__abc--title");
 const filterAuthor = document.getElementsByClassName("filter__abc--author");
 const faveBtn = document.getElementsByClassName("card--btn");
 
 // Load cards
-const loadBooks = (bookArray) => {
+const loadBooks = (array) => {
   container.innerHTML="";
 
-  bookArray.forEach((book) => {
-    container[0].innerHTML += `
+  array.forEach((book) => {
+    container.innerHTML += `
     <div class="card">
       <div class="card--info">
         <div>
@@ -205,7 +205,7 @@ const loadBooks = (bookArray) => {
           <p>${book.author}</p>
         </div>
         <button class="card--btn" onClick="addToFaves('${book.title}')">
-          <i class="fa-regular fa-heart" id="card--heart"></i>
+          <i class="fa-regular fa-heart"></i>
         </button>
       </div>
       <img class="card--img" src=${book.image} alt=${book.title} >
@@ -226,19 +226,16 @@ loadBooks(bookArray);
 
 // Function to filter and display books by genre
 const dropdownGenre = () => {
-  const value = filterGenre[0].value;
+  const value = filterGenre.value;
 
   if (value === "all") {
     loadBooks(bookArray);
   } else  {
     const filteredList = bookArray.filter((book) => book.genre === value);
     loadBooks(filteredList);
+    console.log(filteredList);
   }
 };
-
-// Apply genre filter when user changes dropdown
-filterGenre[0].addEventListener("change", dropdownGenre);
-
 
 // Add book to fave list when click on heart
 const addToFaves = (item) => {
@@ -253,7 +250,7 @@ const addToFaves = (item) => {
   }
   console.log(faveBooks);
 
-  // replace class name for regular to solid heart if title is in the faveBooks array
+  // change regular heart to solid heart if title is in the faveBooks array
   for (let i = heartIcon.length - 1; i >= 0; i--) {
     if (faveBooks.includes(item)) {
       heartIcon[index].classList.remove("fa-regular");
@@ -265,23 +262,22 @@ const addToFaves = (item) => {
 // Filter favorites
 const filterFave = () => {
   const filteredList = bookArray.filter((book) => faveBooks.includes(book.title));
+  const heartIcon = document.getElementsByClassName("fa-heart");
+
   loadBooks(filteredList);
-};
 
-const solidHeart = (item) => {
-   const heartIcon = document.getElementsByClassName("fa-heart");
-
-   for (let i = heartIcon.length - 1; i >= 0; i--) {
-    if (faveBooks.includes(item)) {
+  // show solid heart for favorited books
+  filteredList.forEach(() => {
+    for (let i = 0; i < filteredList.length; i++) {
       heartIcon[i].classList.remove("fa-regular");
       heartIcon[i].classList.add("fa-solid");
     }
-   }
-   
+  });
 };
 
-// Apply favorites filter when click on btn
+
+// Apply event listeners
+filterGenre.addEventListener("change", dropdownGenre);
 favorites[0].addEventListener("click", filterFave);
-faveBtn[0].addEventListener("click", solidHeart);
 
 //  class="${faveBooks.includes(book.title)} ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
