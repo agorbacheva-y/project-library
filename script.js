@@ -202,7 +202,7 @@ const loadBooks = (bookArray) => {
           <p>${book.title}</p>
           <p>${book.author}</p>
         </div>
-        <button onClick="addToFaves('${book.title}')">heart icon</button>
+        <button onClick="addToFaves('${book.title}')"><i class="fa-regular fa-heart"></i></button>
       </div>
       <img id="card--img" src=${book.image} alt=${book.title} >
     </div>
