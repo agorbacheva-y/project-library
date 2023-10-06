@@ -242,12 +242,24 @@ filterGenre[0].addEventListener("change", dropdownGenre);
 
 // Add book to fave list when click on heart
 const addToFaves = (item) => {
+  const heartIcon = document.getElementsByClassName("fa-heart");
+  const index = bookArray.findIndex(b => b.title === item);
+
+  // add book title to faveBooks array
   if (faveBooks.includes(item)) {
     return;
   } else {
     faveBooks.push(item);
   }
   console.log(faveBooks);
+
+  // replace class name for regular to solid heart if title is in the faveBooks array
+  for (let i = heartIcon.length - 1; i >= 0; i--) {
+    if (faveBooks.includes(item)) {
+      heartIcon[index].classList.remove("fa-regular");
+      heartIcon[index].classList.add("fa-solid");
+    }
+  }
 };
 
 // Filter favorites
@@ -256,7 +268,20 @@ const filterFave = () => {
   loadBooks(filteredList);
 };
 
+const solidHeart = (item) => {
+   const heartIcon = document.getElementsByClassName("fa-heart");
+
+   for (let i = heartIcon.length - 1; i >= 0; i--) {
+    if (faveBooks.includes(item)) {
+      heartIcon[i].classList.remove("fa-regular");
+      heartIcon[i].classList.add("fa-solid");
+    }
+   }
+   
+};
+
 // Apply favorites filter when click on btn
 favorites[0].addEventListener("click", filterFave);
+faveBtn[0].addEventListener("click", solidHeart);
 
 //  class="${faveBooks.includes(book.title)} ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
