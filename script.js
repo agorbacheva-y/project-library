@@ -181,16 +181,18 @@ const bookArray = [
   },
 ];
 
-// initialize empty array to hold favorites
+// Initialize empty array to hold favorites
 const faveBooks = [];
 
-// get references to html elements
+// Get references to html elements
 const container = document.getElementById("container");
 const favorites = document.getElementById("filter__fave--btn");
 const genre = document.getElementById("filter__genre--dropdown");
-const abc = document.getElementById("filter__abc");
+const title = document.getElementById("filter__abc--title");
+const author = document.getElementById("filter__abc--author");
+const faveBtn = document.getElementById("card--btn");
 
-// load books
+// Load cards
 const loadBooks = (bookArray) => {
   container.innerHTML="";
 
@@ -203,7 +205,7 @@ const loadBooks = (bookArray) => {
           <p>${book.author}</p>
         </div>
         <button id="card--btn" onClick="addToFaves('${book.title}')">
-          <i class="fa-regular fa-heart" id="card--heart"></i>
+          <i id="card--heart" class="fa-regular fa-heart"></i>
         </button>
       </div>
       <img id="card--img" src=${book.image} alt=${book.title} >
@@ -219,10 +221,10 @@ const loadBooks = (bookArray) => {
   });
 };
 
-// load all books
+// Load all cards
 loadBooks(bookArray);
 
-// function to filter and display books by genre
+// Function to filter and display books by genre
 const filterGenre = () => {
   const value = genre.value;
 
@@ -234,32 +236,35 @@ const filterGenre = () => {
   }
 };
 
-//apply genre filter when user changes dropdown
+// Apply genre filter when user changes dropdown
 genre.addEventListener("change", filterGenre);
 
 
-// add book to fave list when click on heart
+// Add book to fave list when click on heart
 const addToFaves = (item) => {
-  // change color of heart to solid after click
-  // !! heart changes to solid for only the first book...
-  const heart = document.getElementById("card--heart");
-  heart.className = "fa-solid fa-heart";
-
-  // add book to faveBooks array if not already there
   if (faveBooks.includes(item)) {
     return;
   } else {
     faveBooks.push(item);
   }
-
   console.log(faveBooks);
-}
+};
 
-// filter favorites
+// change regular heart to solid heart on click
+const solidHeart = () => {
+  const heart = document.getElementById("card--heart");
+  heart.classList.remove("fa-regular", "fa-heart");
+  heart.classList.add("fa-solid", "fa-heart");
+};
+
+// Filter favorites
 const filterFave = () => {
   const filteredList = bookArray.filter((book) => faveBooks.includes(book.title));
-
   loadBooks(filteredList);
 };
 
+// Apply favorites filter when click on btn
 favorites.addEventListener("click", filterFave);
+document.getElementById("card--btn").addEventListener("click", solidHeart);
+
+//  class="${faveBooks.includes(book.title)} ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
