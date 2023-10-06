@@ -283,11 +283,20 @@ const sortAuthor = () => {
   loadBooks(orderedAuthor);
 };
 
+// Sort alphabetically by title
+const sortTitle = () => {
+  const orderedTitle = bookArray.sort(function(a, b) {
+    return a.title.localeCompare(b.title);
+  })
+  loadBooks(orderedTitle);
+};
+
 
 // Apply event listeners
 filterGenre.addEventListener("change", dropdownGenre);
 favorites[0].addEventListener("click", filterFave);
 filterAuthor[0].addEventListener("click", sortAuthor);
+filterTitle[0].addEventListener("click", sortTitle);
 
 
 //  class="${faveBooks.includes(book.title)} ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
