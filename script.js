@@ -186,7 +186,7 @@ const faveBooks = [];
 
 // get references to html elements
 const container = document.getElementById("container");
-const favorites = document.getElementById("filter__fave");
+const favorites = document.getElementById("filter__fave--btn");
 const genre = document.getElementById("filter__genre--dropdown");
 const abc = document.getElementById("filter__abc");
 
@@ -222,7 +222,6 @@ const loadBooks = (bookArray) => {
 // load all books
 loadBooks(bookArray);
 
-
 // function to filter and display books by genre
 const filterGenre = () => {
   const value = genre.value;
@@ -232,13 +231,14 @@ const filterGenre = () => {
   } else  {
     const filteredList = bookArray.filter((book) => book.genre === value);
     loadBooks(filteredList);
-  };
+  }
 };
 
 //apply genre filter when user changes dropdown
 genre.addEventListener("change", filterGenre);
 
 
+// add book to fave list when click on heart
 const addToFaves = (item) => {
   // change color of heart to solid after click
   // !! heart changes to solid for only the first book...
@@ -254,3 +254,12 @@ const addToFaves = (item) => {
 
   console.log(faveBooks);
 }
+
+// filter favorites
+const filterFave = () => {
+  const filteredList = bookArray.filter((book) => faveBooks.includes(book.title));
+
+  loadBooks(filteredList);
+};
+
+favorites.addEventListener("click", filterFave);
