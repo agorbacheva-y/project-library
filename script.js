@@ -202,7 +202,9 @@ const loadBooks = (bookArray) => {
           <p>${book.title}</p>
           <p>${book.author}</p>
         </div>
-        <button onClick="addToFaves('${book.title}')"><i class="fa-regular fa-heart"></i></button>
+        <button id="card--btn" onClick="addToFaves('${book.title}')">
+          <i class="fa-regular fa-heart" id="card--heart"></i>
+        </button>
       </div>
       <img id="card--img" src=${book.image} alt=${book.title} >
     </div>
@@ -235,3 +237,11 @@ const filterGenre = () => {
 
 //apply genre filter when user changes dropdown
 genre.addEventListener("change", filterGenre);
+
+const addToFaves = (item) => {
+  const heart = document.getElementById("card--heart");
+  heart.className = "fa-solid fa-heart";
+
+  faveBooks.push(item);
+  console.log(faveBooks);
+}

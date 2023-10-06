@@ -32,6 +32,9 @@ body {
   margin: 10px;
 }
 
+#card--btn {
+  background-color: transparent;
+}
 
 #card--img {
   width: 100%;
