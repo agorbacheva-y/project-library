@@ -185,10 +185,10 @@ const bookArray = [
 const faveBooks = [];
 
 // get references to html elements
-const container = document.getElementsByClassName("container");
-const favorites = document.getElementsByClassName("filter__fave");
-const genre = document.getElementsByClassName("filter__genre--dropdown");
-const abc = document.getElementsByClassName("filter__abc");
+const container = document.getElementById("container");
+const favorites = document.getElementById("filter__fave");
+const genre = document.getElementById("filter__genre--dropdown");
+const abc = document.getElementById("filter__abc");
 
 // load books
 const loadBooks = (bookArray) => {
@@ -196,7 +196,7 @@ const loadBooks = (bookArray) => {
 
   bookArray.forEach((book) => {
     container.innerHTML += `
-    <div class="card">
+    <div id="card">
       <p>${book.title}</p>
       <p>${book.author}</p>
       <button onClick="addToFaves('${book.title}')">heart icon</button>
@@ -219,7 +219,7 @@ loadBooks(bookArray);
 
 // function to filter and display books by genre
 const filterGenre = () => {
-  const value = filterGenre.value;
+  const value = genre.value;
 
   if (value === "all") {
     loadBooks(bookArray);
