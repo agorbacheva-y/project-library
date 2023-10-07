@@ -205,6 +205,7 @@ const loadBooks = (array) => {
         <div>
           <p>${book.title}</p>
           <p>${book.author}</p>
+          <p>Rating: ${book.rating}</p>
         </div>
         <button class="card--btn" onClick="addToFaves('${book.title}')">
           <i class="fa-regular fa-heart"></i>
@@ -217,7 +218,6 @@ const loadBooks = (array) => {
       <p>${book.genre}</p>
       <p>Year: ${book.year}</p>
       <p>${book.description}</p>
-      <p>Rating: ${book.rating}</p>
     </div>
     `
   });
@@ -239,7 +239,7 @@ const filterGenre = () => {
 // Add book to fave list when click on heart
 const addToFaves = (item) => {
   const heartIcon = document.getElementsByClassName("fa-heart");
-  const index = bookArray.findIndex(b => b.title === item);
+  const index = bookArray.findIndex((b) => b.title === item);
 
   // add book title to faveBooks array
   if (faveBooks.includes(item)) {
@@ -258,14 +258,14 @@ const addToFaves = (item) => {
   }
 };
 
-// Filter favorites
+// Filter favorites btn
 const filterFave = () => {
   const filteredFaveList = bookArray.filter((book) => faveBooks.includes(book.title));
   const heartIcon = document.getElementsByClassName("fa-heart");
 
   loadBooks(filteredFaveList);
 
-  // show solid heart for favorited books
+  // show solid heart for filtered favorited books
   filteredFaveList.forEach(() => {
     for (let i = 0; i < filteredFaveList.length; i++) {
       heartIcon[i].classList.remove("fa-regular");
