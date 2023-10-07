@@ -187,13 +187,13 @@ const faveBooks = [];
 // Get references to html elements
 const container = document.getElementById("container");
 const favorites = document.getElementsByClassName("filter__fave--btn");
-const filterTwentyFirst = document.getElementsByClassName("filter__new--twentyFirstCentury");
-const filterGenre = document.getElementById("filter__genre--dropdown");
-const filterTitle = document.getElementsByClassName("filter__abc--title");
-const filterAuthor = document.getElementsByClassName("filter__abc--author");
 const faveBtn = document.getElementsByClassName("card--btn");
+const filterGenre = document.getElementById("filter__genre--dropdown");
+const SortTitle = document.getElementsByClassName("filter__abc--title");
+const SortAuthor = document.getElementsByClassName("filter__abc--author");
+const filterSort = document.getElementById("dropdown__date");
 
-// Load cards
+// Function to load cards
 const loadBooks = (array) => {
   container.innerHTML="";
 
@@ -225,7 +225,7 @@ const loadBooks = (array) => {
 // Load all cards
 loadBooks(bookArray);
 
-// Function to filter and display books by genre
+// Filter by genre
 const dropdownGenre = () => {
   const value = filterGenre.value;
 
@@ -276,16 +276,6 @@ const filterFave = () => {
   });
 };
 
-// Filter 21st century
-const filterNew = () => {
-  const filteredNew = bookArray.filter((book) => 
-    book.year >= 2000
-  );
-
-  console.log(filteredNew);
-  loadBooks(filteredNew);
-};
-
 // Sort alphabetically by author
 const sortAuthor = () => {
   const orderedAuthor = bookArray.sort(function(a, b) {
@@ -302,13 +292,25 @@ const sortTitle = () => {
   loadBooks(orderedTitle);
 };
 
+// Function to filter and sort books by date and rating
+const dropdownDate = () => {
+  const value = filterGenre.value;
+
+  if (value === "21st century") {
+    const filteredTwentyFirst = bookArray.filter((book) => book.year >= 2000)
+    loadBooks(filteredTwentyFirst);
+  } else if (value ==="old to new") {
+    const orderedOld = bookArray.sort((a, b) => a.year - b.year);
+    loadBooks(orderedOld);
+  } else if (value ==="new to old") {
+    const orderedNew = bookArray.sort((a, b) => b.year - a.year);
+    loadBooks(orderedNew);
+  }
+}
 
 // Apply event listeners
 filterGenre.addEventListener("change", dropdownGenre);
 favorites[0].addEventListener("click", filterFave);
-filterAuthor[0].addEventListener("click", sortAuthor);
-filterTitle[0].addEventListener("click", sortTitle);
-filterTwentyFirst[0].addEventListener("click", filterNew);
-
-
-//  class="${faveBooks.includes(book.title)} ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
+SortAuthor[0].addEventListener("click", sortAuthor);
+SortTitle[0].addEventListener("click", sortTitle);
+filterSort.addEventListener("change", dropdownDate);

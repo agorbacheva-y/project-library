@@ -13,7 +13,7 @@
   <p>Take a look at our selection of books!</p>
 
   <!-- FILTER ONE genre -->
-  <div class="filter__genre">
+  <div class="dropdown__genre">
     <select id="filter__genre--dropdown">
       <option value="all">All</option>
       <option value="Fiction">Fiction</option>
@@ -26,20 +26,25 @@
     </select>
   </div>
 
-  <!-- FILTER TWO 21st cen -->
-  <div class="filter__new">
-    <button class="filter__new--twentyFirstCentury">21st century</button>
-  </div>
-
-  <!-- Favorites -->
+  <!-- FAVORITES -->
   <div class="filter__fave">
     <button class="filter__fave--btn">favorites</button>
   </div>
 
-  <!-- Sort one  by author and title? -->
+  <!-- SORT ONE & TWO alphabetically by author and title -->
   <div class="filter__abc">
     <button class="filter__abc--author">author</button>
     <button class="filter__abc--title">title</button>
+  </div>
+
+  <!-- SORT THREE & FOUR date -->
+  <div class="dropdown__sort">
+    <select id="dropdown__date">
+      <option value="21st century">21st century</option>
+      <option value="old to new">Oldest to Newest</option>
+      <option value="new to old">Newest to Oldest</option>
+      <option value="rating">Rating</option>
+    </select>
   </div>
 
   <!-- container of book cards -->
