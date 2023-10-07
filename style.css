@@ -51,6 +51,8 @@ body {
   display: none;
 }
 
-.filter__fave {
+.filter__fave--btn,
+.filter__all--btn,
+.filter__twentyFirstCentury--btn {
   cursor: pointer;
 }

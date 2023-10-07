@@ -189,11 +189,9 @@ const container = document.getElementById("container");
 const genre = document.getElementById("filter__genre--dropdown");
 const date = document.getElementById("sort__date--dropdown");
 const favorites = document.getElementsByClassName("filter__fave--btn");
+const showAll = document.getElementsByClassName("filter__all--btn");
 const faveBtn = document.getElementsByClassName("card--btn");
 const twentyFirst = document.getElementsByClassName("filter__twentyFirstCentury--btn");
-
-const SortTitle = document.getElementsByClassName("filter__abc--title");
-const SortAuthor = document.getElementsByClassName("filter__abc--author");
 
 
 // Function to load cards
@@ -276,6 +274,11 @@ const filterFave = () => {
   });
 };
 
+// Show all (btn next to favorites btn)
+const filterAll = () => {
+  loadBooks(bookArray);
+};
+
 // Sort alphabetically by author
 const sortAuthor = () => {
   const orderedAuthor = bookArray.sort(function(a, b) {
@@ -323,6 +326,4 @@ genre.addEventListener("change", filterGenre);
 date.addEventListener("change", sortDate);
 favorites[0].addEventListener("click", filterFave);
 twentyFirst[0].addEventListener("click", filterTwentyFirst);
-
-SortAuthor[0].addEventListener("click", sortAuthor);
-SortTitle[0].addEventListener("click", sortTitle);
+showAll[0].addEventListener("click", filterAll);
