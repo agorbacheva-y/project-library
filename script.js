@@ -201,25 +201,32 @@ const loadBooks = (array) => {
   array.forEach((book) => {
     container.innerHTML += `
     <div class="card">
+      
       <div class="card__info">
         <div>
+          <button class="card__btn" onClick="addToFaves('${book.title}')">
+            <i class="fa-regular fa-heart"></i>
+          </button>
           <h3>${book.title}</h3>
           <p>by ${book.author}</p>
+        </div>
+
+        <div class="card__info--deets">
+          <p>Year: ${book.year}</p>
           <p>Rating: ${book.rating}</p>
         </div>
-        <button class="card__btn" onClick="addToFaves('${book.title}')">
-          <i class="fa-regular fa-heart"></i>
-        </button>
+        
+        <div>
+          <p>${book.genre}</p>
+        </div>
       </div>
       <img class="card__img" src=${book.image} alt=${book.title} >
     </div>
 
-    <div class="overlay">
-      <p>${book.genre}</p>
-      <p>Year: ${book.year}</p>
+    <div class="overlay"> 
       <p>${book.description}</p>
     </div>
-    `
+    `;
   });
 };
 
