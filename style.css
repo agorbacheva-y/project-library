@@ -44,10 +44,11 @@ header {
   display: flex;
   justify-content: center;
   margin: 10px;
+  gap: 10px;
 }
 
 .search > input {
-  width: 250px;
+  width: 230px;
   border: 1px solid grey;
 }
 
