@@ -190,7 +190,7 @@ const genre = document.getElementById("filter__genre--dropdown");
 const date = document.getElementById("sort__date--dropdown");
 const favorites = document.getElementsByClassName("filter__fave--btn");
 const showAll = document.getElementsByClassName("filter__all--btn");
-const faveBtn = document.getElementsByClassName("card--btn");
+const faveBtn = document.getElementsByClassName("card__btn");
 const twentyFirst = document.getElementsByClassName("filter__twentyFirstCentury--btn");
 const searchBar = document.getElementById("search");
 
@@ -201,17 +201,17 @@ const loadBooks = (array) => {
   array.forEach((book) => {
     container.innerHTML += `
     <div class="card">
-      <div class="card--info">
+      <div class="card__info">
         <div>
-          <p>${book.title}</p>
-          <p>${book.author}</p>
+          <h3>${book.title}</h3>
+          <p>by ${book.author}</p>
           <p>Rating: ${book.rating}</p>
         </div>
-        <button class="card--btn" onClick="addToFaves('${book.title}')">
+        <button class="card__btn" onClick="addToFaves('${book.title}')">
           <i class="fa-regular fa-heart"></i>
         </button>
       </div>
-      <img class="card--img" src=${book.image} alt=${book.title} >
+      <img class="card__img" src=${book.image} alt=${book.title} >
     </div>
 
     <div class="overlay">
