@@ -186,12 +186,15 @@ const faveBooks = [];
 
 // Get references to html elements
 const container = document.getElementById("container");
+const genre = document.getElementById("filter__genre--dropdown");
+const date = document.getElementById("sort__date--dropdown");
 const favorites = document.getElementsByClassName("filter__fave--btn");
 const faveBtn = document.getElementsByClassName("card--btn");
-const filterGenre = document.getElementById("filter__genre--dropdown");
+const twentyFirst = document.getElementsByClassName("filter__twentyFirstCentury--btn");
+
 const SortTitle = document.getElementsByClassName("filter__abc--title");
 const SortAuthor = document.getElementsByClassName("filter__abc--author");
-const filterSort = document.getElementById("dropdown__date");
+
 
 // Function to load cards
 const loadBooks = (array) => {
@@ -222,19 +225,16 @@ const loadBooks = (array) => {
   });
 };
 
-// Load all cards
-loadBooks(bookArray);
-
 // Filter by genre
-const dropdownGenre = () => {
-  const value = filterGenre.value;
+const filterGenre = () => {
+  const value = genre.value;
 
   if (value === "all") {
     loadBooks(bookArray);
   } else  {
-    const filteredGenre = bookArray.filter((book) => book.genre === value);
-    loadBooks(filteredGenre);
-    console.log(filteredGenre);
+    const filteredGenreList = bookArray.filter((book) => book.genre === value);
+    loadBooks(filteredGenreList);
+    console.log(filteredGenreList);
   }
 };
 
@@ -262,14 +262,14 @@ const addToFaves = (item) => {
 
 // Filter favorites
 const filterFave = () => {
-  const filteredFave = bookArray.filter((book) => faveBooks.includes(book.title));
+  const filteredFaveList = bookArray.filter((book) => faveBooks.includes(book.title));
   const heartIcon = document.getElementsByClassName("fa-heart");
 
-  loadBooks(filteredFave);
+  loadBooks(filteredFaveList);
 
   // show solid heart for favorited books
-  filteredFave.forEach(() => {
-    for (let i = 0; i < filteredFave.length; i++) {
+  filteredFaveList.forEach(() => {
+    for (let i = 0; i < filteredFaveList.length; i++) {
       heartIcon[i].classList.remove("fa-regular");
       heartIcon[i].classList.add("fa-solid");
     }
@@ -292,25 +292,37 @@ const sortTitle = () => {
   loadBooks(orderedTitle);
 };
 
-// Function to filter and sort books by date and rating
-const dropdownDate = () => {
-  const value = filterGenre.value;
+// Filter 21st century
+const filterTwentyFirst = () => {
+  const filteredTwentyFirstList = bookArray.filter((book) => book.year >= 2000);
+  loadBooks(filteredTwentyFirstList);
+};
 
-  if (value === "21st century") {
-    const filteredTwentyFirst = bookArray.filter((book) => book.year >= 2000)
-    loadBooks(filteredTwentyFirst);
-  } else if (value ==="old to new") {
+// Function to filter and sort books by date and rating and abc
+const sortDate = () => {
+  const value = date.value;
+
+if (value === "old to new") {
     const orderedOld = bookArray.sort((a, b) => a.year - b.year);
     loadBooks(orderedOld);
-  } else if (value ==="new to old") {
+  } else if (value === "new to old") {
     const orderedNew = bookArray.sort((a, b) => b.year - a.year);
     loadBooks(orderedNew);
+  } else if (value === "rating") {
+    const orderedRating = bookArray.sort((a, b) => b.rating - a.rating);
+    loadBooks(orderedRating);
   }
-}
+};
+
+
+// Load all cards
+loadBooks(bookArray);
 
 // Apply event listeners
-filterGenre.addEventListener("change", dropdownGenre);
+genre.addEventListener("change", filterGenre);
+date.addEventListener("change", sortDate);
 favorites[0].addEventListener("click", filterFave);
+twentyFirst[0].addEventListener("click", filterTwentyFirst);
+
 SortAuthor[0].addEventListener("click", sortAuthor);
 SortTitle[0].addEventListener("click", sortTitle);
-filterSort.addEventListener("change", dropdownDate);
