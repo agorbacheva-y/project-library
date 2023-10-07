@@ -187,6 +187,7 @@ const faveBooks = [];
 // Get references to html elements
 const container = document.getElementById("container");
 const favorites = document.getElementsByClassName("filter__fave--btn");
+const filterTwentyFirst = document.getElementsByClassName("filter__new--twentyFirstCentury");
 const filterGenre = document.getElementById("filter__genre--dropdown");
 const filterTitle = document.getElementsByClassName("filter__abc--title");
 const filterAuthor = document.getElementsByClassName("filter__abc--author");
@@ -231,9 +232,9 @@ const dropdownGenre = () => {
   if (value === "all") {
     loadBooks(bookArray);
   } else  {
-    const filteredList = bookArray.filter((book) => book.genre === value);
-    loadBooks(filteredList);
-    console.log(filteredList);
+    const filteredGenre = bookArray.filter((book) => book.genre === value);
+    loadBooks(filteredGenre);
+    console.log(filteredGenre);
   }
 };
 
@@ -261,18 +262,28 @@ const addToFaves = (item) => {
 
 // Filter favorites
 const filterFave = () => {
-  const filteredList = bookArray.filter((book) => faveBooks.includes(book.title));
+  const filteredFave = bookArray.filter((book) => faveBooks.includes(book.title));
   const heartIcon = document.getElementsByClassName("fa-heart");
 
-  loadBooks(filteredList);
+  loadBooks(filteredFave);
 
   // show solid heart for favorited books
-  filteredList.forEach(() => {
-    for (let i = 0; i < filteredList.length; i++) {
+  filteredFave.forEach(() => {
+    for (let i = 0; i < filteredFave.length; i++) {
       heartIcon[i].classList.remove("fa-regular");
       heartIcon[i].classList.add("fa-solid");
     }
   });
+};
+
+// Filter 21st century
+const filterNew = () => {
+  const filteredNew = bookArray.filter((book) => 
+    book.year >= 2000
+  );
+
+  console.log(filteredNew);
+  loadBooks(filteredNew);
 };
 
 // Sort alphabetically by author
@@ -297,6 +308,7 @@ filterGenre.addEventListener("change", dropdownGenre);
 favorites[0].addEventListener("click", filterFave);
 filterAuthor[0].addEventListener("click", sortAuthor);
 filterTitle[0].addEventListener("click", sortTitle);
+filterTwentyFirst[0].addEventListener("click", filterNew);
 
 
 //  class="${faveBooks.includes(book.title)} ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
