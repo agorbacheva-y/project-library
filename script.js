@@ -192,7 +192,7 @@ const favorites = document.getElementsByClassName("filter__fave--btn");
 const showAll = document.getElementsByClassName("filter__all--btn");
 const faveBtn = document.getElementsByClassName("card--btn");
 const twentyFirst = document.getElementsByClassName("filter__twentyFirstCentury--btn");
-
+const searchBar = document.getElementById("search");
 
 // Function to load cards
 const loadBooks = (array) => {
@@ -311,12 +311,26 @@ if (value === "old to new") {
   } else if (value === "new to old") {
     const orderedNew = bookArray.sort((a, b) => b.year - a.year);
     loadBooks(orderedNew);
-  } else if (value === "rating") {
-    const orderedRating = bookArray.sort((a, b) => b.rating - a.rating);
-    loadBooks(orderedRating);
+  } else if (value === "highest") {
+    const orderedHighest = bookArray.sort((a, b) => b.rating - a.rating);
+    loadBooks(orderedHighest);
+  } else {
+    const orderedLowest = bookArray.sort((a, b) => a.rating - b.rating);
+    loadBooks(orderedLowest);
   }
 };
 
+// Search bar
+const search = () => {
+  const searchInput = searchBar.value.toLowerCase();
+  const filteredOutput = bookArray.filter((book) => {
+    const matchTitle = book.title.toLowerCase().includes(searchInput);
+    const matchAuthor = book.author.toLowerCase().includes(searchInput);
+    return matchTitle || matchAuthor;
+  });
+
+  loadBooks(filteredOutput);
+};
 
 // Load all cards
 loadBooks(bookArray);
@@ -327,3 +341,4 @@ date.addEventListener("change", sortDate);
 favorites[0].addEventListener("click", filterFave);
 twentyFirst[0].addEventListener("click", filterTwentyFirst);
 showAll[0].addEventListener("click", filterAll);
+searchBar.addEventListener("input", search);
