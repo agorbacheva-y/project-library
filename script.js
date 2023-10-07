@@ -215,7 +215,7 @@ const loadBooks = (array) => {
           <p>Year: ${book.year}</p>
           <p>Rating: ${book.rating}</p>
         </div>
-        
+
         <div>
           <p>${book.genre}</p>
         </div>
