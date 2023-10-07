@@ -54,7 +54,7 @@ header {
   width: 300px;
   min-height: 450px;
   border-radius: 15px;
-  border: 1px solid blue;
+  border: 1px solid grey;
 }
 
 .card__info {

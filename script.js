@@ -256,6 +256,11 @@ const addToFaves = (item) => {
       heartIcon[index].classList.add("fa-solid");
     }
   }
+
+  //!!! I get a syntax error when i click on the heart for only two of the
+  // books (Harry Potter and Hitchhiker's Guide) and therefore the hearts
+  // do not change to solid color. I cannot figure out why this happens ???
+  
 };
 
 // Filter favorites btn
