@@ -38,6 +38,19 @@ header {
 
 .filter button {
   border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.filter button:hover {
+  border: 2px solid grey;
+}
+
+.filter button:focus {
+  border-color: black;
+}
+
+.filter button:active {
+  background-color: white;
 }
 
 .search {
