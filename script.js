@@ -117,7 +117,7 @@ const bookArray = [
     rating: 3.8,
     description:
       'A gripping mystery thriller that follows Harvard symbologist Robert Langdon as he unravels the secrets of the Da Vinci Code.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/unknown2.jpg'
   },
   {
     title: 'The Alchemist',
@@ -127,7 +127,7 @@ const bookArray = [
     rating: 4.25,
     description:
       'A philosophical novel that tells the story of Santiago, a shepherd boy, on his quest to discover his personal legend.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/alchemist.jpg'
   },
   {
     title: 'The Hunger Games',
@@ -137,7 +137,7 @@ const bookArray = [
     rating: 4.3,
     description:
       "In a dystopian future, Katniss Everdeen becomes a symbol of rebellion when she volunteers to take her sister's place in the brutal Hunger Games.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/unknown3.jpg'
   },
   {
     title: 'The Girl with the Dragon Tattoo',
@@ -147,7 +147,7 @@ const bookArray = [
     rating: 4.1,
     description:
       'A gripping mystery novel featuring investigative journalist Mikael Blomkvist and the enigmatic hacker Lisbeth Salander.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/unknown4.jpg'
   },
   {
     title: 'The Road',
@@ -157,7 +157,7 @@ const bookArray = [
     rating: 4,
     description:
       "Set in a post-apocalyptic world, it follows a father and son's harrowing journey to survive and find safety.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/unknown5.jpg'
   },
   {
     title: "The Hitchhiker's Guide to the Galaxy",
@@ -167,7 +167,7 @@ const bookArray = [
     rating: 4.35,
     description:
       "A comedic science fiction series that follows the misadventures of Arthur Dent after Earth's destruction.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/unknown6.jpg'
   },
   {
     title: 'The Giver',
@@ -177,7 +177,7 @@ const bookArray = [
     rating: 4.12,
     description:
       'A dystopian novel set in a seemingly perfect society where young Jonas discovers the dark truth beneath the surface.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/unknown7.jpg'
   },
 ];
 
