@@ -60,7 +60,7 @@ const bookArray = [
     image: './books-images/the-hobbit.jpg'
   },
   {
-    title: "Harry Potter and the Sorcerer's Stone",
+    title: 'Harry Potter and the Sorcerer&#39;s Stone',
     author: 'J.K. Rowling',
     year: 1997,
     genre: 'Fantasy',
@@ -160,7 +160,7 @@ const bookArray = [
     image: './books-images/unknown5.jpg'
   },
   {
-    title: "The Hitchhiker's Guide to the Galaxy",
+    title: 'The Hitchhiker&#39;s Guide to the Galaxy',
     author: 'Douglas Adams',
     year: 1979,
     genre: 'Science Fiction',
@@ -246,7 +246,7 @@ const filterGenre = () => {
 // Add book to fave list when click on heart
 const addToFaves = (item) => {
   const heartIcon = document.getElementsByClassName("fa-heart");
-  const index = bookArray.findIndex((b) => b.title === item);
+  const index = bookArray.findIndex((book) => book.title === item);
 
   // add book title to faveBooks array
   if (faveBooks.includes(item)) {
@@ -264,9 +264,11 @@ const addToFaves = (item) => {
     }
   }
 
-  //!!! I get a syntax error when i click on the heart for only two of the
-  // books (Harry Potter and Hitchhiker's Guide) and therefore the hearts
-  // do not change to solid color. I cannot figure out why this happens ???
+// !!! I get a syntax error when i click on the heart for only two of the
+// books (Harry Potter and Hitchhiker's Guide) and therefore the hearts
+// do not change to solid color. I cannot figure out why this happens ???
+// I looked over the array, no syntax errors found. i looked over the function, no
+// errors I could find that would affect just these two books...
   
 };
 
